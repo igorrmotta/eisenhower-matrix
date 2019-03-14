@@ -1,0 +1,25 @@
+{
+  "name": "eisenhower-matrix-server",
+  "version": "0.0.1",
+  "author": "igorrmotta <igorrmotta@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "nexus-generate": "npx nexus-prisma-generate --client ./src/generated/prisma-client --output ./src/generated/nexus-prisma",
+    "dev": "ts-node-dev --no-notify --respawn --transpileOnly ./"
+  },
+  "dependencies": {
+    "graphql": "14.1.1",
+    "graphql-yoga": "1.17.4",
+    "nexus": "0.11.2",
+    "nexus-prisma": "0.3.5",
+    "prisma-client-lib": "1.28.3"
+  },
+  "devDependencies": {
+    "@types/faker": "4.1.5",
+    "faker": "4.1.0",
+    "ts-node": "8.0.3",
+    "ts-node-dev": "1.0.0-pre.32",
+    "typescript": "3.3.3333"
+  }
+}
