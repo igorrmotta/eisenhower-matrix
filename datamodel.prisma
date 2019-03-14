@@ -1,0 +1,21 @@
+type Card {
+  id: ID! @id
+  title: String!
+  content: String!
+}
+
+type EisenMatrix {
+  id: ID! @id
+
+  do: [Card!]! @relation(name: "DoCard", link: "INLINE")
+  decide: [Card!]! @relation(name: "DecideCard", link: "INLINE")
+  delegate: [Card!]! @relation(name: "DelegateCard", link: "INLINE")
+  delete: [Card!]! @relation(name: "DeleteCard", link: "INLINE")
+}
+
+type User {
+  id: ID! @id
+  name: String!
+
+  matrix: EisenMatrix @relation(link: "INLINE")
+}
