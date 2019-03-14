@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ts-node src/index.ts",
     "nexus-generate": "npx nexus-prisma-generate --client ./src/generated/prisma-client --output ./src/generated/nexus-prisma",
-    "dev": "ts-node-dev --no-notify --respawn --transpileOnly ./"
+    "dev": "ts-node-dev --no-notify --respawn --transpileOnly ./src/index.ts"
   },
   "dependencies": {
     "graphql": "14.1.1",
