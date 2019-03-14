@@ -2,10 +2,9 @@
   "name": "eisenhower-matrix",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "start": "ts-node index.ts",
-    "nexus-generate": "npx nexus-prisma-generate --client ./generated/prisma-client --output ./generated/nexus-prisma",
+    "start": "ts-node src/index.ts",
+    "nexus-generate": "npx nexus-prisma-generate --client ./src/generated/prisma-client --output ./src/generated/nexus-prisma",
     "dev": "ts-node-dev --no-notify --respawn --transpileOnly ./"
   },
   "keywords": [],
