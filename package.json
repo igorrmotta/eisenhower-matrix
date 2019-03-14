@@ -10,12 +10,10 @@
     "postinstall": "lerna run postinstall",
     "test": "lerna run test --stream --include-filtered-dependencies --scope"
   },
-  "workspaces": {
-    "packages": [
-      "server/*",
-      "client/*"
-    ]
-  },
+  "workspaces": [
+    "server",
+    "client"
+  ],
   "devDependencies": {
     "lerna": "3.4.3",
     "typescript": "3.3.3333"
