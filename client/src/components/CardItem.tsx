@@ -36,25 +36,23 @@ const CardItem: React.FunctionComponent<Props> = props => {
     <Draggable draggableId={props.card.id} index={props.index}>
       {provided => (
         <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-          <Paper className="card-item">
-            <div>
-              {!!state.editing && (
-                <>
-                  <IconButton onClick={onCompleteEdit}>
-                    <Save />
-                  </IconButton>
-                  <TextField onChange={onChangeTitle} value={state.title} />
-                </>
-              )}
-              {!state.editing && (
-                <>
-                  <IconButton onClick={onEdit}>
-                    <Edit />
-                  </IconButton>
-                  <Typography variant="subtitle1" children={props.card.title} />
-                </>
-              )}
-            </div>
+          <Paper className="card-item" elevation={1}>
+            {!!state.editing && (
+              <>
+                <TextField style={{ flexGrow: 1 }} onChange={onChangeTitle} value={state.title} />
+                <IconButton onClick={onCompleteEdit}>
+                  <Save fontSize="small" />
+                </IconButton>
+              </>
+            )}
+            {!state.editing && (
+              <>
+                <Typography variant="subtitle1" children={props.card.title} />
+                <IconButton onClick={onEdit}>
+                  <Edit fontSize="small" />
+                </IconButton>
+              </>
+            )}
           </Paper>
         </div>
       )}

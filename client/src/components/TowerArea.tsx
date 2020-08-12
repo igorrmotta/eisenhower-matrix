@@ -64,16 +64,22 @@ const TowerArea: React.FunctionComponent<Props> = props => {
   };
 
   const style: React.CSSProperties = {
-    padding: 8,
-    display: 'grid',
-    gridTemplateColumns: '1fr',
-    gridColumnGap: 16,
-    gridRowGap: 16,
+    padding: '8px 8px 68px 56px',
+    overflow: 'hidden',
 
     position: 'relative',
 
     gridArea: props.gridArea,
     backgroundColor: props.color === 'green' ? green[50] : deepOrange[50]
+  };
+
+  const cardListStyle: React.CSSProperties = {
+    display: 'grid',
+    gridTemplateColumns: '1fr',
+    gridRowGap: 16,
+    overflowY: 'auto',
+    height: '100%',
+    paddingRight: 16
   };
 
   const textStyle: React.CSSProperties = {
@@ -88,36 +94,31 @@ const TowerArea: React.FunctionComponent<Props> = props => {
   const buttonStyle: React.CSSProperties = {
     position: 'absolute',
     top: 0,
-    left: 0,
-    margin: 8
+    left: 0
   };
 
   return (
-    <Droppable droppableId={`${props.towerName}-area`}>
-      {provided => (
-        <div
-          style={style}
-          ref={provided.innerRef}
-          {...provided.droppableProps}
-          onMouseOver={onMouseOver}
-          onMouseLeave={onMouseLeave}
-        >
-          {getCards().map((card, index) => (
-            <CardItem towerName={props.towerName} key={card.id} card={card} index={index} />
-          ))}
+    <div style={style} onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>
+      <Droppable droppableId={`${props.towerName}-area`}>
+        {provided => (
+          <div style={cardListStyle} ref={provided.innerRef} {...provided.droppableProps}>
+            {getCards().map((card, index) => (
+              <CardItem towerName={props.towerName} key={card.id} card={card} index={index} />
+            ))}
+          </div>
+        )}
+      </Droppable>
 
-          {!!state.hover && (
-            <IconButton style={buttonStyle} onClick={onAddCard}>
-              <Add />
-            </IconButton>
-          )}
-
-          <Tooltip title={getHelpText(props.towerName)}>
-            <Typography variant="h2" style={textStyle} children={props.towerName} />
-          </Tooltip>
-        </div>
+      {!!state.hover && (
+        <IconButton style={buttonStyle} onClick={onAddCard}>
+          <Add fontSize="small" />
+        </IconButton>
       )}
-    </Droppable>
+
+      <Tooltip title={getHelpText(props.towerName)}>
+        <Typography variant="h2" style={textStyle} children={props.towerName} />
+      </Tooltip>
+    </div>
   );
 };
 
